@@ -12,4 +12,18 @@ namespace OOStepByStepTest
             Assert.NotNull(class1);
         }
     }
+
+    public class PersonTest
+    {
+        [Fact]
+        public void Should_return_introduce_when_person_introduce_given_person_with_name_and_age()
+        {
+            //given
+            var person = new Person("Tom", 30);
+            //when
+            var introduce = person.Introduce();
+            //then
+            Assert.Equal("My name is Tom. I am 30 years old", introduce);
+        }
+    }
 }
