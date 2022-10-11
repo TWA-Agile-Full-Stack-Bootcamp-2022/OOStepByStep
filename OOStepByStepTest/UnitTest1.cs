@@ -47,5 +47,18 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Tom. I am 30 years old. I am a teacher.", introduce);
         }
+
+        [Fact]
+        public void Should_introduce_like_a_student_in_class_when_introduce_given_class_and_student()
+        {
+            //given
+            var student = new Student("Tom", 30);
+            var gradeClass = new GradeClass("class 2");
+            gradeClass.JoinStudent(student);
+            //when
+            var introduce = student.Introduce();
+            //then
+            Assert.Equal("My name is Tom. I am 30 years old. I am a student of class 2.", introduce);
+        }
     }
 }
