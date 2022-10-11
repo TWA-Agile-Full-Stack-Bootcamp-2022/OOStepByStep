@@ -15,7 +15,7 @@ namespace OOStepByStep
 
         public string Introduce()
         {
-            return $"My name is {name}. I am {age} years old";
+            return $"My name is {name}. I am {age} years old.";
         }
     }
 }
