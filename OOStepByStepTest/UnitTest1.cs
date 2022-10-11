@@ -73,5 +73,17 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Tom. I am 30 years old. I am a teacher of class 2.", introduce);
         }
+
+        [Fact]
+        public void Should_throw_exception_when_add_new_teacher_given_class_all_ready_has_teacher()
+        {
+            //given
+            var teacher = new Teacher("Tom", 30);
+            var teacherNew = new Teacher("Tom2", 30);
+            var gradeClass = new GradeClass("class 2");
+            gradeClass.JoinTeacher(teacher);
+            //then
+            Assert.Throws<OneClassOneTeacherException>(() => gradeClass.JoinTeacher(teacherNew));
+        }
     }
 }
