@@ -35,8 +35,8 @@ namespace OOStepByStepTest
         {
             string name = "Amy";
             int age = 30;
-            var teacher = new Teacher(name, age);
-            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.", teacher.IntroduceSelf());
+            var teacher = new Teacher(name, age, new Class("2"));
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", teacher.IntroduceSelf());
         }
     }
 }
