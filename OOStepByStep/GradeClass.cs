@@ -18,5 +18,10 @@ namespace OOStepByStep
         {
             return this.name;
         }
+
+        public void JoinTeacher(Teacher teacher)
+        {
+            teacher.SetClass(this);
+        }
     }
 }
