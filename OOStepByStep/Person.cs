@@ -18,5 +18,10 @@ namespace OOStepByStep
         {
             return $"My name is {name}. I am {age} years old.";
         }
+
+        public string GetName()
+        {
+            return name;
+        }
     }
 }

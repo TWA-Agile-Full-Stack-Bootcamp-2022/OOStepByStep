@@ -16,5 +16,10 @@ namespace OOStepByStep
         {
             return $"{base.IntroduceSelf()} I am a teacher of class {classClass.GetName()}.";
         }
+
+        public string WelcomeNewStudent(Student student)
+        {
+            return this.IntroduceSelf() + " Welcome " + student.GetName() + " join class 2.";
+        }
     }
 }
