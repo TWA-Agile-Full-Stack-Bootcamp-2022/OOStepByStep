@@ -26,8 +26,8 @@ namespace OOStepByStepTest
         {
             string name = "Tom";
             int age = 18;
-            var student = new Student(name, age);
-            Assert.Equal("My name is Tom. I am 18 years old. I am a student.", student.IntroduceSelf());
+            var student = new Student(name, age, new Class("2"));
+            Assert.Equal("My name is Tom. I am 18 years old. I am a student of class 2.", student.IntroduceSelf());
         }
 
         [Fact]
