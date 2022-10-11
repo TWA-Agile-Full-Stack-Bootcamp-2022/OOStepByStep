@@ -97,7 +97,8 @@ namespace OOStepByStepTest
             //when
             var introduce = student.Welcome(newStudent);
             //then
-            Assert.Equal("My name is Tom. I am 30 years old. I am a student of class 2. Welcome TomNew join class 2.", introduce);
+            Assert.Equal("My name is Tom. I am 30 years old. I am a student of class 2. Welcome TomNew join class 2.",
+                introduce);
         }
 
         [Fact]
@@ -111,7 +112,27 @@ namespace OOStepByStepTest
             //when
             var introduce = teacher.Welcome(newStudent);
             //then
-            Assert.Equal("My name is Tom. I am 30 years old. I am a teacher of class 2. Welcome TomNew join class 2.", introduce);
+            Assert.Equal("My name is Tom. I am 30 years old. I am a teacher of class 2. Welcome TomNew join class 2.",
+                introduce);
+        }
+
+        [Fact]
+        public void
+            Should_welcome_new_student_in_class_when_class_join_new_student_given_class_and_teacher_and_student()
+        {
+            //given
+            var teacher = new Teacher("TomTeacher", 30);
+            var newStudent = new Student("TomNew", 30);
+            var oldStudent = new Student("TomStudent", 30);
+            var gradeClass = new GradeClass("class 2");
+            gradeClass.JoinTeacher(teacher);
+            gradeClass.JoinStudent(oldStudent);
+            //when
+            var welcomes = gradeClass.JoinStudent(newStudent);
+            //then
+            Assert.Equal(
+                "My name is TomTeacher. I am 30 years old. I am a teacher of class 2. Welcome TomNew join class 2.\nMy name is TomStudent. I am 30 years old. I am a student of class 2. Welcome TomNew join class 2.\n",
+                welcomes);
         }
     }
 }
