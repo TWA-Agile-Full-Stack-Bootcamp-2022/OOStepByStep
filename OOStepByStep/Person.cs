@@ -1,10 +1,8 @@
-using System;
-
 namespace OOStepByStep
 {
     public class Person
     {
-        private string name;
+        protected string name;
         private int age;
 
         public Person(string name, int age)
