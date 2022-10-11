@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace OOStepByStep
 {
     public class Teacher : Person
@@ -17,6 +19,11 @@ namespace OOStepByStep
         public void SetClass(GradeClass gradeClass)
         {
             this.@class = gradeClass;
+        }
+
+        public string Welcome(Student newStudent)
+        {
+            return this.Introduce() + $" Welcome {newStudent.GetName()} join {@class.GetName()}.";
         }
     }
 }

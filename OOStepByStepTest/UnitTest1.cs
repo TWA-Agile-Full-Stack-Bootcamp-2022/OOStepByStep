@@ -99,5 +99,19 @@ namespace OOStepByStepTest
             //then
             Assert.Equal("My name is Tom. I am 30 years old. I am a student of class 2. Welcome TomNew join class 2.", introduce);
         }
+
+        [Fact]
+        public void Should_welcome_new_student_in_class_when_welcome_given_class_and_teacher()
+        {
+            //given
+            var teacher = new Teacher("Tom", 30);
+            var newStudent = new Student("TomNew", 30);
+            var gradeClass = new GradeClass("class 2");
+            gradeClass.JoinTeacher(teacher);
+            //when
+            var introduce = teacher.Welcome(newStudent);
+            //then
+            Assert.Equal("My name is Tom. I am 30 years old. I am a teacher of class 2. Welcome TomNew join class 2.", introduce);
+        }
     }
 }
