@@ -6,7 +6,10 @@ namespace OOStepByStep
 
         public Student(string name, int age) : base(name, age)
         {
+            Name = name;
         }
+
+        public string Name { get; }
 
         public override string IntroduceSelf()
         {
