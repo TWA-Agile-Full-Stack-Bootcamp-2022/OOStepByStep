@@ -3,6 +3,7 @@ namespace OOStepByStep
     public class Class
     {
         private Teacher teacher;
+        private Student[] students;
 
         public Class(int classNumber)
         {
@@ -21,5 +22,19 @@ namespace OOStepByStep
         }
 
         public int ClassNumber { get; set; }
+
+        public Student[] Students
+        {
+            get => this.students;
+
+            set
+            {
+                this.students = value;
+                foreach (var student in this.students)
+                {
+                    student.JoinClass(this);
+                }
+            }
+        }
     }
 }
