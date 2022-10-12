@@ -14,7 +14,7 @@ namespace OOStepByStep
             this.age = age;
         }
 
-        public string Introduction()
+        public virtual string IntroduceSelf()
         {
             return $"My name is {name}. I am {age} years old.";
         }
