@@ -48,5 +48,21 @@ namespace OOStepByStepTest
             Assert.Contains("My name is Amy. I am 30 years old. I am a teacher of class 1. Welcome Jim join class 1.",
                 fakeOutput.ToString());
         }
+
+        [Fact]
+        public void Should_say_welcome_when_a_student_join_class_given_a_student_belong_to_a_class()
+        {
+            var student = new Student("Tom", 18);
+            var clss = new Class(1);
+            clss.Students = new List<Student>() { student };
+            var fakeOutput = new StringBuilder();
+            Console.SetOut(new StringWriter(fakeOutput));
+
+            clss.AddNewStudent(new Student("Jim", 18));
+
+            Assert.Equal(2, clss.Students.Count);
+            Assert.Contains("My name is Tom. I am 18 years old. I am a student of class 1. Welcome Jim join class 1.",
+                fakeOutput.ToString());
+        }
     }
 }

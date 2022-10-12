@@ -20,9 +20,9 @@ namespace OOStepByStep
             this.classNumber = clss.ClassNumber;
         }
 
-        public string Welcome(Student student)
+        public string Welcome(Student newStudent)
         {
-            return IntroduceSelf() + $" Welcome {student.Name} join class {classNumber}.";
+            return IntroduceSelf() + $" Welcome {newStudent.Name} join class {classNumber}.";
         }
     }
 }

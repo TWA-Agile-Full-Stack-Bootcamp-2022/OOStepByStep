@@ -42,11 +42,19 @@ namespace OOStepByStep
             }
         }
 
-        public void AddNewStudent(Student student)
+        public void AddNewStudent(Student newStudent)
         {
-            this.students.Add(student);
+            this.students.Add(newStudent);
 
-            Console.WriteLine(this.teacher.Welcome(student));
+            if (this.teacher != null)
+            {
+                Console.WriteLine(this.teacher.Welcome(newStudent));
+            }
+
+            foreach (var student in students)
+            {
+                Console.WriteLine(student.Welcome(newStudent));
+            }
         }
     }
 }
