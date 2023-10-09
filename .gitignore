@@ -8,3 +8,5 @@
 /OOStepByStepTest/bin
 /OOStepByStepTest/obj
 .idea
+/coveragereport
+TestResults
