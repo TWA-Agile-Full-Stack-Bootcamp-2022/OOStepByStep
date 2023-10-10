@@ -65,6 +65,9 @@ namespace OOStepByStepTest
                 Assert.Contains($"My name is {student.Name}. I am {student.Age} years old. I am a student of class {classNumber}. Welcome {newStudent.Name} join class 2.",
                     fakeOutput.ToString());
             }
+
+            Assert.DoesNotContain($"My name is {newStudent.Name}. I am {newStudent.Age} years old. I am a student of class {classNumber}. Welcome {newStudent.Name} join class 2.",
+                    fakeOutput.ToString());
         }
     }
 }
