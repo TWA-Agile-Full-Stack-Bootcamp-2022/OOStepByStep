@@ -14,7 +14,7 @@ namespace OOStepByStep
         public string Name { get; set; }
         public int Age { get; set; }
 
-        public void Introduce()
+        public virtual void Introduce()
         {
             Console.WriteLine($"My name is {Name}. I am {Age} years old.");
         }
