@@ -18,9 +18,18 @@ namespace OOStepByStepTest
 
         public void AddStudent(Student newJoinedStudent)
         {
-            Students.Add(newJoinedStudent);
             newJoinedStudent.Classroom = this;
-            Teacher.IntroduceAndWelcome(newJoinedStudent.Name);
+            if (Teacher != null)
+            {
+                Teacher.IntroduceAndWelcome(newJoinedStudent.Name);
+            }
+
+            foreach (var student in Students)
+            {
+                student.IntroduceAndWelcome(newJoinedStudent.Name);
+            }
+
+            Students.Add(newJoinedStudent);
         }
     }
 }

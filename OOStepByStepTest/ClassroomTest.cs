@@ -32,5 +32,27 @@ namespace OOStepByStepTest
                 $"I am a teacher of class {givenClassroomNumber}. " +
                 $"Welcome {newJoinedStudent.Name} join class {givenClassroomNumber}.\r\n", actual);
         }
+
+        [Fact]
+        public void Should_joined_student_say_welcom_when_student_join_the_classroom()
+        {
+            // Given
+            int givenClassroomNumber = 2;
+            Classroom classroom = new Classroom(givenClassroomNumber);
+            var joinedStudent = new Student("Tom", 18, classroom);
+            var newJoinedStudent = new Student("Jim", 18);
+
+            var fakeOutput = new StringBuilder();
+            Console.SetOut(new StringWriter(fakeOutput));
+
+            // When
+            classroom.AddStudent(newJoinedStudent);
+
+            // Then
+            string actual = fakeOutput.ToString();
+            Assert.Equal($"My name is {joinedStudent.Name}. I am {joinedStudent.Age} years old. " +
+                $"I am a student of class {givenClassroomNumber}. " +
+                $"Welcome {newJoinedStudent.Name} join class {givenClassroomNumber}.\r\n", actual);
+        }
     }
 }

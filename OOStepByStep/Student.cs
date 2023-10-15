@@ -13,11 +13,23 @@ namespace OOStepByStep
         public Student(string name, int age, Classroom classroom) : this(name, age)
         {
             Classroom = classroom;
+            classroom.Students.Add(this);
         }
 
         public Classroom Classroom { get; set; }
 
         public override void Introduce()
+        {
+            string introduceInfo = BuildSelfIntroduction();
+            Console.WriteLine(introduceInfo);
+        }
+
+        public void IntroduceAndWelcome(string name)
+        {
+            Console.WriteLine(BuildSelfIntroduction() + $" Welcome {name} join class {Classroom.Number}.");
+        }
+
+        private string BuildSelfIntroduction()
         {
             var studentInfo = "I am a student";
             if (Classroom != null)
@@ -25,7 +37,8 @@ namespace OOStepByStep
                 studentInfo += " of class " + Classroom.Number;
             }
 
-            Console.WriteLine($"My name is {Name}. I am {Age} years old. {studentInfo}.");
+            string introduceInfo = $"My name is {Name}. I am {Age} years old. {studentInfo}.";
+            return introduceInfo;
         }
     }
 }
