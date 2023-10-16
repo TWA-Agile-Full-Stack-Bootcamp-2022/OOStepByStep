@@ -6,7 +6,7 @@ namespace OOStepByStep
         {
         }
 
-        public string Introduce()
+        public new string Introduce()
         {
             return base.Introduce() + " I am a teacher.";
         }
