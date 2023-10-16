@@ -24,7 +24,6 @@ namespace OOStepByStep
 
         public string AddStudent(Student student)
         {
-            this.students.Add(student);
             student.SetClass(this);
 
             var result = string.Empty;
@@ -32,6 +31,13 @@ namespace OOStepByStep
             {
                 result = this.teacher.Introduce() + $" Welcome {student.GetName()} join {this.name}.";
             }
+
+            students.ForEach(s =>
+            {
+                result += s.Introduce() + $" Welcome {student.GetName()} join {this.name}.";
+            });
+
+            this.students.Add(student);
 
             return result;
         }
