@@ -43,5 +43,13 @@ namespace OOStepByStepTest
             var result = class1.GetName();
             Assert.Equal("class 1", result);
         }
+
+        [Fact]
+        public void Should_get_introduce_with_class_when_give_a_student_and_Class()
+        {
+            var student = new Student("Tom", 21, new Class("class 1"));
+            var result = student.Introduce();
+            Assert.Equal("My name is Tom. I am 21 years old. I am a student of class 1.", result);
+        }
     }
 }
