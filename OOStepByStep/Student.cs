@@ -7,7 +7,7 @@ namespace OOStepByStep
         {
         }
 
-        public Student(string name, int age, Class classClass) : base(name, age)
+        public void SetClass(Class classClass)
         {
             this.classClass = classClass;
         }

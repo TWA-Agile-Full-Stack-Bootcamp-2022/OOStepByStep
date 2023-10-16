@@ -47,7 +47,11 @@ namespace OOStepByStepTest
         [Fact]
         public void Should_get_introduce_with_class_when_give_a_student_and_Class()
         {
-            var student = new Student("Tom", 21, new Class("class 1"));
+            var class1 = new Class("class 1");
+            var student = new Student("Tom", 21);
+
+            class1.AddStudent(student);
+
             var result = student.Introduce();
             Assert.Equal("My name is Tom. I am 21 years old. I am a student of class 1.", result);
         }
@@ -55,9 +59,26 @@ namespace OOStepByStepTest
         [Fact]
         public void Should_get_introduce_with_class_when_give_a_Teacher_and_Class()
         {
-            var teacher = new Teacher("Amy", 30, new Class("class 2"));
+            var class2 = new Class("class 2");
+            var teacher = new Teacher("Amy", 30);
+            class2.AddTeacher(teacher);
+
             var result = teacher.Introduce();
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", result);
+        }
+
+        [Fact]
+        public void Should_get_teacher_welcome_message_when_student_add_a_class()
+        {
+            var class1 = new Class("class 1");
+            var teacher = new Teacher("Amy", 30);
+            class1.AddTeacher(teacher);
+
+            var student = new Student("Tom", 21);
+
+            var result = class1.AddStudent(student);
+
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 1. Welcome Tom join class 1.", result);
         }
     }
 }
