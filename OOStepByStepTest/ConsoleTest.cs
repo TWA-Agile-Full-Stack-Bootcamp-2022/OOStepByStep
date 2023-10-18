@@ -14,13 +14,27 @@ namespace OOStepByStepTest
         {
             // given
             var fakeOutput = new StringBuilder();
-            Console.SetOut(new StringWriter(fakeOutput));
+            StringWriter newOut = new StringWriter(fakeOutput);
+            Console.SetOut(newOut);
 
             // when
             new Class1().Print();
 
             // then
-            Assert.Equal("console\n", fakeOutput.ToString());
+            Assert.Equal("console\r\n", fakeOutput.ToString());
+        }
+    }
+
+    public class PersonTest
+    {
+        [Fact]
+        public void Test_Person()
+        {
+            Person person = new Person("Tom", 21);
+
+            string result = person.SelfIntroduce();
+
+            Assert.Equal("My name is Tom. I am 21 years old.", result);
         }
     }
 }
