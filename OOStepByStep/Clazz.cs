@@ -1,15 +1,8 @@
 ﻿namespace OOStepByStep
 {
     using System;
+    using System.Linq;
     using System.Transactions;
-
-    public class Class1
-    {
-        public void Print()
-        {
-            Console.WriteLine("console");
-        }
-    }
 
     public class Person
     {
@@ -30,25 +23,60 @@
 
     public class Student : Person
     {
+        private Class clazz;
         public Student(string name, int age) : base(name, age)
         {
         }
 
+        public Student(string name, int age, Class clazz) : base(name, age)
+        {
+            this.clazz = clazz;
+        }
+
         public override string SelfIntroduce()
         {
-            return base.SelfIntroduce() + " I am a student.";
+            if (clazz == null)
+            {
+                return base.SelfIntroduce() + " I am a student.";
+            }
+
+            return base.SelfIntroduce() + $" I am a student of class {clazz.Number}.";
         }
     }
 
     public class Teacher : Person
     {
+        private readonly Class clazz;
+
+        public Teacher(string name, int age, Class clazz) : base(name, age)
+        {
+            this.clazz = clazz;
+        }
+
         public Teacher(string name, int age) : base(name, age)
         {
         }
 
         public override string SelfIntroduce()
         {
-            return base.SelfIntroduce() + " I am a teacher.";
+            if (clazz == null)
+            {
+                return base.SelfIntroduce() + " I am a teacher.";
+            }
+
+            return base.SelfIntroduce() + $" I am a teacher of class {clazz.Number}.";
         }
+    }
+
+    public class Class
+    {
+        private readonly int number;
+
+        public Class(int number)
+        {
+            this.number = number;
+        }
+
+        public int Number => number;
     }
 }

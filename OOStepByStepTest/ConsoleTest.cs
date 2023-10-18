@@ -7,24 +7,6 @@ namespace OOStepByStepTest
     using OOStepByStep;
     using Xunit;
 
-    public class ConsoleTest
-    {
-        [Fact]
-        public void Test_Console()
-        {
-            // given
-            var fakeOutput = new StringBuilder();
-            StringWriter newOut = new StringWriter(fakeOutput);
-            Console.SetOut(newOut);
-
-            // when
-            new Class1().Print();
-
-            // then
-            Assert.Equal("console\r\n", fakeOutput.ToString());
-        }
-    }
-
     public class PersonTest
     {
         [Fact]
@@ -46,6 +28,13 @@ namespace OOStepByStepTest
             Student student = new Student("Tom", 18);
             Assert.Equal("My name is Tom. I am 18 years old. I am a student.", student.SelfIntroduce());
         }
+
+        [Fact]
+        public void Test_Student_with_class()
+        {
+            Student student = new Student("Tom", 18, new Class(2));
+            Assert.Equal("My name is Tom. I am 18 years old. I am a student of class 2.", student.SelfIntroduce());
+        }
     }
 
     public class TeacherTest
@@ -55,6 +44,13 @@ namespace OOStepByStepTest
         {
             Teacher teacher = new Teacher("Amy", 30);
             Assert.Equal("My name is Amy. I am 30 years old. I am a teacher.", teacher.SelfIntroduce());
+        }
+
+        [Fact]
+        public void Teacher_with_class()
+        {
+            Teacher teacher = new Teacher("Amy", 30, new Class(2));
+            Assert.Equal("My name is Amy. I am 30 years old. I am a teacher of class 2.", teacher.SelfIntroduce());
         }
     }
 }
