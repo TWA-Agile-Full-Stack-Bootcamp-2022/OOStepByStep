@@ -1,9 +1,6 @@
 namespace OOStepByStepTest
 {
     using OOStepByStep;
-    using System;
-    using System.IO;
-    using System.Text;
     using Xunit;
 
     public class PersonTest
@@ -16,14 +13,11 @@ namespace OOStepByStepTest
             int givenAge = 21;
             var person = new Person(givenName, givenAge);
 
-            var fakeOutput = new StringBuilder();
-            Console.SetOut(new StringWriter(fakeOutput));
-
             // When
-            person.Introduce();
+            string info = person.Introduce();
 
             // Then
-            Assert.Equal($"My name is {givenName}. I am {givenAge} years old.\r\n", fakeOutput.ToString());
+            Assert.Equal($"My name is {givenName}. I am {givenAge} years old.", info);
         }
     }
 }

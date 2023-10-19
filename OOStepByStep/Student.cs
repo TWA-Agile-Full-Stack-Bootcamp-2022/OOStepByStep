@@ -18,10 +18,10 @@ namespace OOStepByStep
 
         public Classroom Classroom { get; set; }
 
-        public override void Introduce()
+        public override string Introduce()
         {
             string introduceInfo = BuildSelfIntroduction();
-            Console.WriteLine(introduceInfo);
+            return introduceInfo;
         }
 
         public void IntroduceAndWelcome(string name)

@@ -16,14 +16,11 @@ namespace OOStepByStepTest
             int givenAge = 21;
             var person = new Student(givenName, givenAge);
 
-            var fakeOutput = new StringBuilder();
-            Console.SetOut(new StringWriter(fakeOutput));
-
             // When
-            person.Introduce();
+            string info = person.Introduce();
 
             // Then
-            Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a student.\r\n", fakeOutput.ToString());
+            Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a student.", info);
         }
 
         [Fact]
@@ -40,10 +37,10 @@ namespace OOStepByStepTest
             Console.SetOut(new StringWriter(fakeOutput));
 
             // When
-            person.Introduce();
+            string info = person.Introduce();
 
             // Then
-            Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a student of class {givenClassNumber}.\r\n", fakeOutput.ToString());
+            Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a student of class {givenClassNumber}.", info);
         }
     }
 }
