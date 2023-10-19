@@ -1,6 +1,7 @@
 ﻿namespace OOStepByStep
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Transactions;
 
@@ -14,6 +15,8 @@
             this.name = name;
             this.age = age;
         }
+
+        public string Name { get => name; set => name = value; }
 
         public virtual string SelfIntroduce()
         {
@@ -42,6 +45,11 @@
 
             return base.SelfIntroduce() + $" I am a student of class {clazz.Number}.";
         }
+
+        internal string Notify(string name)
+        {
+            return SelfIntroduce() + $" Welcome Jim join class {clazz.Number}";
+        }
     }
 
     public class Teacher : Person
@@ -66,11 +74,18 @@
 
             return base.SelfIntroduce() + $" I am a teacher of class {clazz.Number}.";
         }
+
+        internal string Notify(string name)
+        {
+            return SelfIntroduce() + $" Welcome Jim join class {clazz.Number}";
+        }
     }
 
     public class Class
     {
         private readonly int number;
+        private readonly List<Student> students = new();
+        private Teacher teacher;
 
         public Class(int number)
         {
@@ -78,5 +93,14 @@
         }
 
         public int Number => number;
+
+        public Teacher Teacher { get => teacher; set => teacher = value; }
+
+        public void AddStudent(Student student)
+        {
+            students.ForEach(s => { s.Notify(student.Name); });
+            teacher.Notify(student.Name);
+            students.Add(student);
+        }
     }
 }
