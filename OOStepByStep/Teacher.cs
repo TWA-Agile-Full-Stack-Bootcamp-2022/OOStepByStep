@@ -27,8 +27,7 @@ namespace OOStepByStep
                 teacherInfo += " of class " + ClassroomNumber;
             }
 
-            string introduceInfo = $"My name is {Name}. I am {Age} years old. {teacherInfo}.";
-            return introduceInfo;
+            return $"My name is {Name}. I am {Age} years old. {teacherInfo}.";
         }
     }
 }
