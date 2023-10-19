@@ -16,17 +16,23 @@ namespace OOStepByStepTest
 
         public int Number { get; set; }
 
+        public void AddTeacher(Teacher teacher)
+        {
+            Teacher = teacher;
+            teacher.ClassroomNumber = Number;
+        }
+
         public void AddStudent(Student newJoinedStudent)
         {
-            newJoinedStudent.Classroom = this;
+            newJoinedStudent.ClassroomNumber = Number;
             if (Teacher != null)
             {
-                Teacher.IntroduceAndWelcome(newJoinedStudent.Name);
+                Teacher.OnStudentJoined(newJoinedStudent.Name);
             }
 
             foreach (var student in Students)
             {
-                student.IntroduceAndWelcome(newJoinedStudent.Name);
+               student.OnStudentJoined(newJoinedStudent.Name);
             }
 
             Students.Add(newJoinedStudent);

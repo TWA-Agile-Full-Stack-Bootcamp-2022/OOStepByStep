@@ -1,40 +1,28 @@
-﻿using OOStepByStepTest;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace OOStepByStep
 {
-    public class Student : Person
+    public class Student : Person, IClassroomObserver
     {
+        private const int NO_CLASSROOM = 0;
+
         public Student(string name, int age) : base(name, age)
         {
         }
 
-        public Student(string name, int age, Classroom classroom) : this(name, age)
+        public int ClassroomNumber { get; set; }
+
+        public void OnStudentJoined(string name)
         {
-            Classroom = classroom;
-            classroom.Students.Add(this);
+            Console.WriteLine(BuildIntroductionInfo() + $" Welcome {name} join class {ClassroomNumber}.");
         }
 
-        public Classroom Classroom { get; set; }
-
-        public override string Introduce()
-        {
-            string introduceInfo = BuildSelfIntroduction();
-            return introduceInfo;
-        }
-
-        public void IntroduceAndWelcome(string name)
-        {
-            Console.WriteLine(BuildSelfIntroduction() + $" Welcome {name} join class {Classroom.Number}.");
-        }
-
-        private string BuildSelfIntroduction()
+        public override string BuildIntroductionInfo()
         {
             var studentInfo = "I am a student";
-            if (Classroom != null)
+            if (ClassroomNumber != NO_CLASSROOM)
             {
-                studentInfo += " of class " + Classroom.Number;
+                studentInfo += " of class " + ClassroomNumber;
             }
 
             string introduceInfo = $"My name is {Name}. I am {Age} years old. {studentInfo}.";

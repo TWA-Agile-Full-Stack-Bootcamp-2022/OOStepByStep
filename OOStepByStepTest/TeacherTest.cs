@@ -14,7 +14,7 @@ namespace OOStepByStepTest
             var person = new Teacher(givenName, givenAge);
 
             // When
-            string info = person.Introduce();
+            string info = person.BuildIntroductionInfo();
 
             // Then
             Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a teacher.", info);
@@ -28,10 +28,11 @@ namespace OOStepByStepTest
             int givenAge = 30;
             int givenClassNumber = 2;
             var classroom = new Classroom(givenClassNumber);
-            var person = new Teacher(givenName, givenAge, classroom);
+            var person = new Teacher(givenName, givenAge);
+            classroom.AddTeacher(person);
 
             // When
-            string info = person.Introduce();
+            string info = person.BuildIntroductionInfo();
 
             // Then
             Assert.Equal($"My name is {givenName}. I am {givenAge} years old. I am a teacher of class {givenClassNumber}.", info);

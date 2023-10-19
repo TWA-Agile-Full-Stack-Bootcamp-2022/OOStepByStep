@@ -4,37 +4,27 @@ using System.Collections.Generic;
 
 namespace OOStepByStep
 {
-    public class Teacher : Person
+    public class Teacher : Person, IClassroomObserver
     {
-        private Classroom classroom;
+        private const int NO_CLASSROOM = 0;
 
         public Teacher(string name, int age) : base(name, age)
         {
         }
 
-        public Teacher(string name, int age, Classroom classroom) : this(name, age)
+        public int ClassroomNumber { get; set; }
+
+        public void OnStudentJoined(string name)
         {
-            this.classroom = classroom;
-            classroom.Teacher = this;
+            Console.WriteLine(BuildIntroductionInfo() + $" Welcome {name} join class {ClassroomNumber}.");
         }
 
-        public override string Introduce()
-        {
-            string introduceInfo = BuildSelfIntroduction();
-            return introduceInfo;
-        }
-
-        public void IntroduceAndWelcome(string joinedStudentName)
-        {
-            Console.WriteLine(BuildSelfIntroduction() + $" Welcome {joinedStudentName} join class {classroom.Number}.");
-        }
-
-        private string BuildSelfIntroduction()
+        public override string BuildIntroductionInfo()
         {
             var teacherInfo = "I am a teacher";
-            if (classroom != null)
+            if (ClassroomNumber != NO_CLASSROOM)
             {
-                teacherInfo += " of class " + classroom.Number;
+                teacherInfo += " of class " + ClassroomNumber;
             }
 
             string introduceInfo = $"My name is {Name}. I am {Age} years old. {teacherInfo}.";

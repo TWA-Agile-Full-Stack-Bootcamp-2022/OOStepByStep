@@ -17,7 +17,10 @@ namespace OOStepByStepTest
             // Given
             int givenClassroomNumber = 2;
             Classroom classroom = new Classroom(givenClassroomNumber);
-            Teacher teacher = new Teacher("Amy", 30, classroom);
+
+            Teacher teacher = new Teacher("Amy", 30);
+            classroom.AddTeacher(teacher);
+
             var newJoinedStudent = new Student("Tom", 21);
 
             var fakeOutput = new StringBuilder();
@@ -39,7 +42,9 @@ namespace OOStepByStepTest
             // Given
             int givenClassroomNumber = 2;
             Classroom classroom = new Classroom(givenClassroomNumber);
-            var joinedStudent = new Student("Tom", 18, classroom);
+            var joinedStudent = new Student("Tom", 18);
+            classroom.AddStudent(joinedStudent);
+
             var newJoinedStudent = new Student("Jim", 18);
 
             var fakeOutput = new StringBuilder();
