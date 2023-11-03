@@ -6,36 +6,35 @@ namespace OOStepByStepTest
 {
     public class Classroom
     {
+        private List<IClassroomObserver> observers = new List<IClassroomObserver>();
         public Classroom(int number)
         {
-            Number = number;
+            RoomNumber = number;
         }
 
-        public Teacher Teacher { get; set; }
-        public List<Student> Students { get; set; } = new List<Student>();
+        public int RoomNumber { get; set; }
 
-        public int Number { get; set; }
-
-        public void AddTeacher(Teacher teacher)
+        public void Join(IClassroomObserver observer)
         {
-            Teacher = teacher;
-            teacher.ClassroomNumber = Number;
+            if (observer is Student)
+            {
+                Student studentJoined = observer as Student;
+                studentJoined.ClassroomNumber = RoomNumber;
+                NotifyStudentJoin(studentJoined.Name);
+            }
+
+            if (observer is Teacher)
+            {
+                Teacher teacherJoined = observer as Teacher;
+                teacherJoined.ClassroomNumber = RoomNumber;
+            }
+
+            observers.Add(observer);
         }
 
-        public void AddStudent(Student newJoinedStudent)
+        public void NotifyStudentJoin(string studentName)
         {
-            newJoinedStudent.ClassroomNumber = Number;
-            if (Teacher != null)
-            {
-                Teacher.OnStudentJoined(newJoinedStudent.Name);
-            }
-
-            foreach (var student in Students)
-            {
-               student.OnStudentJoined(newJoinedStudent.Name);
-            }
-
-            Students.Add(newJoinedStudent);
+            observers.ForEach(observer => observer.OnStudentJoined(studentName));
         }
     }
 }

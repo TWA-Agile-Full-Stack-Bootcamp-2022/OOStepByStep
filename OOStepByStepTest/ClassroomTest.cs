@@ -19,7 +19,7 @@ namespace OOStepByStepTest
             Classroom classroom = new Classroom(givenClassroomNumber);
 
             Teacher teacher = new Teacher("Amy", 30);
-            classroom.AddTeacher(teacher);
+            classroom.Join(teacher);
 
             var newJoinedStudent = new Student("Tom", 21);
 
@@ -27,7 +27,7 @@ namespace OOStepByStepTest
             Console.SetOut(new StringWriter(fakeOutput));
 
             // When
-            classroom.AddStudent(newJoinedStudent);
+            classroom.Join(newJoinedStudent);
 
             // Then
             string actual = fakeOutput.ToString();
@@ -43,7 +43,7 @@ namespace OOStepByStepTest
             int givenClassroomNumber = 2;
             Classroom classroom = new Classroom(givenClassroomNumber);
             var joinedStudent = new Student("Tom", 18);
-            classroom.AddStudent(joinedStudent);
+            classroom.Join(joinedStudent);
 
             var newJoinedStudent = new Student("Jim", 18);
 
@@ -51,7 +51,7 @@ namespace OOStepByStepTest
             Console.SetOut(new StringWriter(fakeOutput));
 
             // When
-            classroom.AddStudent(newJoinedStudent);
+            classroom.Join(newJoinedStudent);
 
             // Then
             string actual = fakeOutput.ToString();

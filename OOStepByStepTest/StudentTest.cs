@@ -32,7 +32,7 @@ namespace OOStepByStepTest
             int givenClassNumber = 2;
             var classroom = new Classroom(givenClassNumber);
             var person = new Student(givenName, givenAge);
-            classroom.AddStudent(person);
+            classroom.Join(person);
 
             var fakeOutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeOutput));

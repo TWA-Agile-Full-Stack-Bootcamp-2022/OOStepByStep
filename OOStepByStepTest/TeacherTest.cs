@@ -29,7 +29,7 @@ namespace OOStepByStepTest
             int givenClassNumber = 2;
             var classroom = new Classroom(givenClassNumber);
             var person = new Teacher(givenName, givenAge);
-            classroom.AddTeacher(person);
+            classroom.Join(person);
 
             // When
             string info = person.BuildIntroductionInfo();
